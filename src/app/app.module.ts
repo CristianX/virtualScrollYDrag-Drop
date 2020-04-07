@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { VirtualComponent } from './virtual/virtual.component';
 
-// Cirtual Scroll
+// Virtual Scroll
 import { ScrollingModule } from '@angular/cdk/scrolling';
+
+
 
 @NgModule({
   declarations: [
