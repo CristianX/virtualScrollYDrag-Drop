@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-paises',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaisesComponent implements OnInit {
 
-  constructor() { }
+  paises: any = [];
+
+  constructor( private http: HttpClient ) { }
 
   ngOnInit(): void {
+    this.http.get( 'https://restcountries.eu/rest/v2/lang/es' ).subscribe( paises => this.paises = paises );
+  }
+
+  drop(evento: CdkDragDrop<any>) {
+    // console.log('ok', evento);
+    // Recorrer arreglos al mover un país
+    moveItemInArray( this.paises, evento.previousIndex, evento.currentIndex );
+
   }
 
 }
